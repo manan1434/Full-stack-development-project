@@ -64,9 +64,13 @@ export default function Dashboard() {
   const seedDemo = async () => {
     setSeeding(true);
     try {
+      // Throttle: Render free tier rate-limits HTTP traffic.
+      // 250ms between requests keeps us under the limit.
       for (const s of SAMPLE_SEEDS) {
         // eslint-disable-next-line no-await-in-loop
         await client.post('/expenses', s);
+        // eslint-disable-next-line no-await-in-loop
+        await new Promise((r) => setTimeout(r, 250));
       }
       await load();
     } catch (err) {
