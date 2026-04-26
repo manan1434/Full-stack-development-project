@@ -1,7 +1,9 @@
 const axios = require('axios');
 
 const FALLBACK_CATEGORY = 'Other';
-const TIMEOUT_MS = 3000;
+// Render free tier sleeps after 15min idle and takes ~30s to wake.
+// Generous timeout means a categorize-on-cold-start works instead of falling back to "Other".
+const TIMEOUT_MS = 45000;
 
 async function classifyExpense({ description, amount }) {
   const url = process.env.ML_SERVICE_URL;

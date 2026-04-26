@@ -88,11 +88,9 @@ export default function Dashboard() {
             Month
             <input type="month" value={month} onChange={(e) => setMonth(e.target.value)} />
           </label>
-          {import.meta.env.DEV && (
-            <button className="btn btn-ghost" onClick={seedDemo} disabled={seeding}>
-              {seeding ? 'Seeding…' : 'Seed demo data'}
-            </button>
-          )}
+          <button className="btn btn-ghost" onClick={seedDemo} disabled={seeding}>
+            {seeding ? 'Seeding…' : 'Seed demo data'}
+          </button>
         </div>
       </header>
 
